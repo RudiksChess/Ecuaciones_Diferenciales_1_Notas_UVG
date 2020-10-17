@@ -1,0 +1,278 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 2.4 (26/09/2018)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+
+\input{structure.tex} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+%\hypersetup{pdftitle={Title},pdfauthor={Author}} % Uncomment and fill out to include PDF metadata for the author and title of the book
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty} % Suppress headers and footers on the title page
+\begin{tikzpicture}[remember picture,overlay]
+\node[inner sep=0pt] (background) at (current page.center) {\includegraphics[width=\paperwidth]{Pictures/background.pdf}};
+\draw (current page.center) node [fill=blue!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering Ecuaciones Diferenciales 1\\[15pt] % Book title
+{\Large Notas de clases}\\[20pt] % Subtitle
+{\huge Rudik Roberto Rompich}}}; % Author name
+\end{tikzpicture}
+\vfill
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+~\vfill
+\thispagestyle{empty}
+
+\noindent Copyright \copyright\ 2020 Rudik Rompich\\ % Copyright notice
+
+\noindent \textsc{Published by Rudiks}\\ % Publisher
+
+\noindent \textsc{rudiks.com}\\ % URL
+
+\noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information, replace this with your own license (if any)
+
+\noindent \textit{First printing, October 2020} % Printing/edition date
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\usechapterimagefalse % If you don't want to include a chapter image, use this to toggle images off - it can be enabled later with \usechapterimagetrue
+
+\chapterimage{Pictures/0001} % Table of contents heading image
+
+\pagestyle{empty} % Disable headers and footers for the following pages
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right side of the book
+
+\pagestyle{fancy} % Enable headers and footers again
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+
+\part{Transformada de Laplace}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Pictures/0001} % Chapter heading image
+
+\chapter{Contenido para el parcial 3}
+\section{14 de octubre de 2020}
+
+\subsection{Ejercicio 2}
+\begin{align}
+y''+2y'+y &= \delta(t-1) & y(0) = 0, y'(0) = 0\\
+\la{y''}+2\la{y'}+\la{y}&= \la{\delta(t-1)}\\
+s^2 \la{y}-sy(0)-y'(0)+2[s\la{y}-y(0)]+\la{y}&=e^{-s}\\
+(s^2 +2s+1)\la{y}&= e^{-s}\\
+\la{y}&=e^{-s}(\frac{1}{(s+1)^2})\\
+\intertext{Primer teorema de traslación}
+y&=\lai{e^{-s}\frac{1}{(s+1)^{2}}}& \lai{\frac{1}{(s+1)^2}}&= te^{-t}\\
+\intertext{Segundo teorema de traslación}
+y&=(t-1)e^{-(t-1)}*H(t-1)
+\end{align}
+
+\subsection{Ejercicio para casa}
+\begin{align}
+    y'''+y &= e^t +\delta(t-1) & y(0)=1,y'(0)=1,y''(0)=2
+\end{align}
+
+Por ejemplo para orden superior: 
+$$\la{y'''}=s^3 \la{y}-s^2 y(0)-sy'(0)-y''(0)$$
+$$\la{y^{IV}}=s^4\la{y}-s^3y(0)-s^2y'(0)-sy''(0)-y'''(0) $$
+
+\subsection{Solución de EDO por Series}
+\begin{itemize}
+    \item Series de potencias
+    \item Series de Frobenius 
+\end{itemize}
+
+Hemos resuelto ecuaciones del tipo: 
+$$y''+2y'+y=e^x$$ 
+$$x^2 y''+2xy'+y=e^x$$
+
+Pero: 
+$$(x^2+1)y''-xy'+y=e^x$$
+$$xy''+e^x y=1$$
+
+Objetivos de los métodos: Resolver ecuaciones diferenciales con coeficientes variables. 
+
+\begin{definition}
+Una serie de potencias es una expresión de la forma siguiente:
+\begin{equation}
+    a_0 +a_1 x + a_2 x^2 + a_3 x^3 +... = \sum_{i=0}^\infty a_n x^n
+\end{equation}
+\end{definition}
+
+\begin{notation}
+Suponga que se cumplen las condiciones de convergencia que correspondan se tiene: 
+\begin{align}
+y&= \sum{n=0}^\infty a_n x^n = a_0 +a_1 x+a_2 x^2 +a_3 x^3 +...\\
+y'&=a_1+2a_2 x +3a_3 x^2 + 4a_4 x^3 +...\\
+y' &= \sum_{n=1}^\infty na_n x^{n-1}\\
+y''&=\suma{n=2}{\infty}{n(n-1)a_n x^{n-2}}
+\end{align}
+\end{notation}
+
+\begin{notation}
+Suponga que:
+\begin{align}
+    \suma{n=1}{\infty}{na_n x^{n-1}} &= a_1 +2a_2x +3a_3 x^2 +... 
+\end{align}
+En donde:
+\begin{align}
+    \suma{n=0}{\infty}{(n+1)a_{n+1}x^n}&= a_1 +2a_2x +3a_3 x^2 +... \\
+    \suma{n=2}{\infty}{(n-1)a_{n-1}x^{n-2}}&=a_1 +2a_2x +3a_3 x^2 +...
+\end{align}
+\end{notation}
+
+\section{16 de octubre de 2020}
+\begin{notation}
+\begin{align}
+    \suma{n=1}{\infty}{a_n x^n}&= a_0+a_1 x+a_2 x^2 +a_3 x^3 +... = 0\\
+    \implies a_n&=0
+\end{align}
+\end{notation}
+
+\subsection{Ejercicio 1}
+\begin{align}
+    \intertext{Resuelva:}
+    y'-y&=0&y'=y\\
+    \intertext{Suponemos:}
+    y&=\suma{n=0}{\infty}{a_n x^n}=a_0+a_1 x +a_2 x^2 +...\\
+    \implies y' &= \sum_{n=1}^\infty na_n x^{n-1}\\
+    \intertext{Sustituyendo en la ecuación diferencial:}
+    \implies \sum_{n=1}^\infty na_n x^{n-1} - \suma{n=0}{\infty}{a_n x^n}=0\\
+    \implies \suma{n=0}{\infty}{(n+1)a_{n+1}x^x{n+1-1}}- \suma{n=0}{\infty}{a_n x^n}=0\\
+    \implies \suma{n=0}{\infty}{(n+1)a_{n+1}x^n}-\suma{n=0}{\infty}{a_n x^n}=0\\
+    \implies \suma{n=0}{\infty}{[(n+1)a_{n+1}-a_n]}x^n=0 & 0+0x+0x^2+0x^3 =0 \\ 
+    \implies [(n+1)a_{n+1}-a_n]=0 && n=,0,1,2...\\
+    \intertext{Ecuación indicial:}
+    \implies a_{n+1}=\frac{a_n}{n+1}&&n=0,1,2,...\\
+    \intertext{n=0:}
+    a_1 = \frac{a_0}{1}\\
+    \intertext{n=1:}
+    a_2 = \frac{a_1}{2}=\frac{a_0}{2*1}\\
+    \intertext{n=2}: 
+    a_3=\frac{a_2}{3}=\frac{a_0}{3*2*1}\\
+    \intertext{n=3:}
+    a_4 =\frac{a_3}{4}=\frac{a_0}{4*3*2*1}\\
+    \intertext{n=n:}
+    a_n = \frac{a_0}{n!}\\
+    \implies y(x)=\suma{n=0}{\infty}{a_n x^n}=a_0+a_1 x +a_2 x^2 +a_3 x^3+...\\
+    \implies y(x)= a_0 +\frac{a_0}{1!}x + \frac{a_0}{2!}x^2+\frac{a_0}{3!}x^3 + \frac{a_0}{4!}x^4+...\\
+    \intertext{Un supuesto:}
+    \implies y(x)= a_0 [1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}+...]&\frac{x^0}{0!}=1\\
+    \implies y = a_0 [1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}+...]\\
+    \intertext{Serie de McLaurin (Taylor) para $f(x)=e^x$:}
+    \implies y= a_0 \suma{n=0}{\infty}{\frac{x^n}{n!}} \\
+    \implies y= a_0 e^x 
+\end{align}
+
+\subsection{Ejercicio 2}
+\begin{align}
+    \intertext{Resuelva:}
+    y''+y=0 \\
+    \text{ya se sabe}y=c_1\cos x +c_2\sin x\\
+    \intertext{Suponemos que:}
+    y= \suma{n=0}{\infty}{a_n x^n}\\
+    \implies y' =\suma{n=1}{\infty}{na_n x^{n-1}}\\
+    \implies y''=\suma{n=2}{\infty}{n(n-1)a_n x^{n-2}}\\
+    \intertext{Sustituyendo en la ecuación diferencial}
+    \implies \suma{n=2}{\infty}{n(n-1)a_n x^{n-2}} + \suma{n=1}{\infty}{na_n x^{n-1}} =0\\
+    \implies \suma{n=0}{\infty}{(n+2)(n+1)a_{n+2} x^{n}} + \suma{n=1}{\infty}{na_n x^{n-1}} =0\\
+    \implies \suma{n=0}{\infty}{[(n+2)(n+1)a_{n+2}+a_n]x^n}\\
+    (n+2)(n+1)a_{n+2}+a_n && n=,0,1,2...\\+
+    \intertext{Ecuación indicial:}
+    \implies a_{n+2}=\frac{-a_n}{(n+2)(n+1)} && n=0,1,2,... 
+    \intertext{n=0:}
+    a_2 = \frac{-a_0}{2*1}\\
+    \intertext{n=1:}
+    a_3 = \frac{-a_1}{3*2}\\
+    \intertext{n=2:}
+    a_4 = \frac{-a_2}{4*3} = \frac{\frac{-a_0}{2*1}}{4*3}= a_4 = \frac{a_0}{4*3*2*1}\\
+    \intertext{n=3:}
+    a_5= \frac{-a_3}{5*4}= \frac{\frac{-a_1}{3*2}}{5*4*3*2}\\
+    \intertext{n=4:}
+    a_6= \frac{-a_4}{6*5} = \frac{-a_0}{6*5*4*3*2}\\
+    \intertext{n=5}
+    a_7 = \frac{-a_5}{7*6}= \frac{-a_1}{7*6*5*4*3*2}\\
+    \intertext{Solución de la ecuación diferencial}
+    y= \suma{n=0}{\infty}{a_n x^n}=a_0*a_1 x +a_2 x^2 +a_3 x^3 +...\\
+    \implies y = a_0 + a_1 x +\frac{a_0}{2!}x^2 - \frac{a_1}{3!}x^3 +\frac{a_0}{4!}x^4 + \frac{a_1}{5!}x^5\\
+    \implies y= a_0(1- \frac{x^2}{2!}+\frac{x^4}{4!}+...)+a_1(x-\frac{x^3}{3!}-\frac{x^5}{5!}+...)\\
+    \implies y= a_0 \suma{n=0}{\infty}{\frac{(-1)^n x^{2n}}{(2n)!}}+a_1\suma{n=0}{\infty}{\frac{(-1)^n x^{2n+1}}{(2n+1)!}}\\
+    &= a_0\cos x +a_1\sin x 
+\end{align}
+
+
+
+%	INDEX
+%----------------------------------------------------------------------------------------
+
+\cleardoublepage % Make sure the index starts on an odd (right side) page
+\phantomsection
+\setlength{\columnsep}{0.75cm} % Space between the 2 columns of the index
+\addcontentsline{toc}{chapter}{\textcolor{blue}{Index}} % Add an Index heading to the table of contents
+\printindex % Output the index
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
